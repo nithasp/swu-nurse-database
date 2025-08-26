@@ -1,0 +1,130 @@
+@font-face {
+   font-family: "Sarabun";
+   src: url("../font/sarabun/Sarabun-Regular.ttf") format("truetype");
+}
+
+@font-face {
+   font-family: "SarabunBold";
+   src: url("../font/sarabun/Sarabun-Bold.ttf") format("truetype");
+}
+
+@font-face {
+   font-family: "Srinakharinwirot";
+   src: url("../font/srinakharinwirot/srinakharinwirot-regular.woff2") format("truetype");
+}
+
+* {
+   font-family: "Sarabun", system-ui, sans-serif;
+}
+
+.hide-height-scroll::-webkit-scrollbar {
+   height: 0;
+}
+
+::-webkit-scrollbar {
+   width: 4px;
+   height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+   background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+   background: #eaecf0;
+   border-radius: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+   background: #d0d5dd;
+}
+
+$duration: 60s;
+.text-news-run {
+   position: fixed;
+   bottom: 8px;
+   width: 100%;
+   overflow: hidden;
+   // padding-right: 100%;
+   box-sizing: content-box;
+
+   .text-run {
+      display: inline-block;
+      white-space: nowrap;
+      padding-left: 100%;
+      box-sizing: content-box;
+
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+      animation-timing-function: linear;
+      -webkit-animation-name: running;
+      animation-name: running;
+      -webkit-animation-duration: $duration;
+      animation-duration: $duration;
+
+      &--item {
+         display: inline-block;
+         padding: 0 2rem;
+         color: white;
+         .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 100%;
+            background-color: #fff;
+            margin-right: 8px;
+         }
+      }
+   }
+}
+
+@keyframes running {
+   0% {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      visibility: visible;
+   }
+
+   100% {
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+   }
+}
+
+@media print {
+   body {
+      -webkit-print-color-adjust: exact; /* Chrome/Safari */
+      print-color-adjust: exact; /* Firefox */
+   }
+   @page {
+      size: landscape;
+      margin: 0;
+   }
+   #button-print,
+   #button-export,
+   #swu-header,
+   #swu-sidebar,
+   #tab-dashboard {
+      display: none !important;
+   }
+
+   #swu-body {
+      grid-template-columns: 1fr !important;
+   }
+
+   #swu-main {
+      min-height: 100vh !important;
+      height: auto !important;
+   }
+
+   .no-print {
+      display: none !important;
+   }
+
+   .show-for-print {
+      display: block !important;
+   }
+}
